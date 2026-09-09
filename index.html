@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clarifier Micro‑Widget</title>
 
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 40px;
       background: #f5faff;
       color: #333;
@@ -17,12 +20,13 @@
       margin-bottom: 10px;
       text-align: center;
       font-size: 20px;
+      font-weight: 600;
     }
 
     .container {
       background: #eaf4ff;
       padding: 20px 24px;
-      border-radius: 8px;
+      border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
       max-width: 400px;
       margin: 0 auto;
@@ -36,9 +40,11 @@
       border: 1px solid #ccc;
       font-size: 16px;
       box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
 
-    button {
+    /* Primary Clarifier button */
+    .primary-btn {
       display: block;
       margin: 20px auto 0;
       padding: 12px 20px;
@@ -48,22 +54,48 @@
       background: #0078d4;
       color: white;
       cursor: pointer;
+      width: 100%;
+      font-weight: 500;
     }
 
-    button:hover {
+    .primary-btn:hover {
       background: #005fa3;
+    }
+
+    /* Utility buttons */
+    .utility-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 14px;
+    }
+
+    .utility-btn {
+      flex: 1;
+      margin: 0 4px;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      background: #f0f0f0;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .utility-btn:hover {
+      background: #e0e0e0;
     }
 
     .output {
       margin-top: 30px;
       padding: 14px;
-      background: #f0f0f0;        /* soft gray read-only background */
-      border: 1px solid #ccc;     /* same border as input */
-      border-radius: 6px;         /* same rounding as input */
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
       white-space: pre-wrap;
       min-height: 120px;
       box-sizing: border-box;
-      width: 100%;                /* full width */
+      width: 100%;
+      font-family: 'Inter', sans-serif;
     }
   </style>
 </head>
@@ -74,7 +106,12 @@
 
     <textarea id="inputText" rows="5" placeholder="Type something…"></textarea>
 
-    <button onclick="clarifyText()">Clarifier</button>
+    <button class="primary-btn" onclick="clarifyText()">Clarifier</button>
+
+    <div class="utility-row">
+      <button class="utility-btn" onclick="copyOutput()">Copy</button>
+      <button class="utility-btn" onclick="clearAll()">Clear</button>
+    </div>
 
     <div id="output" class="output"></div>
   </div>
@@ -91,6 +128,16 @@
 
       const clarified = "Clarified version:\n\n" + input.replace(/\s+/g, ' ').trim();
       output.textContent = clarified;
+    }
+
+    function copyOutput() {
+      const text = document.getElementById('output').textContent;
+      navigator.clipboard.writeText(text);
+    }
+
+    function clearAll() {
+      document.getElementById('inputText').value = "";
+      document.getElementById('output').textContent = "";
     }
   </script>
 </body>
