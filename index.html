@@ -6,7 +6,6 @@
     <title>Clarifier</title>
 
     <style>
-        /* ---------- BASE LIGHT MODE ---------- */
         body {
             margin: 0;
             padding: 0;
@@ -16,15 +15,21 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        /* ---------- DARK MODE ---------- */
         body.dark-mode {
             background: #111;
             color: #eee;
         }
 
+        h1 {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
         .container {
             max-width: 600px;
-            margin: 40px auto;
+            margin: 20px auto;
             padding: 20px;
         }
 
@@ -85,15 +90,9 @@
 </head>
 
 <body>
+    <h1>Clarifier</h1>
+
     <div class="container">
-        <h2>Clarifier</h2>
-
-        <!-- Environment diagnostic -->
-        <div id="env-warning" style="display:none; padding:12px; background:#ffdddd; border:1px solid #cc0000; border-radius:8px; margin-bottom:20px;">
-            You opened a preview or cached version.  
-            Please launch the real <strong>index.html</strong> from File Explorer.
-        </div>
-
         <textarea id="input" placeholder="Paste text to clarify..."></textarea>
         <button id="run">Clarify</button>
 
@@ -103,12 +102,6 @@
     </div>
 
     <script>
-        /* ---------- ENVIRONMENT CHECK ---------- */
-        const isLocal = window.location.protocol === "file:";
-        if (!isLocal) {
-            document.getElementById("env-warning").style.display = "block";
-        }
-
         /* ---------- DARK MODE TOGGLE ---------- */
         const toggle = document.getElementById("toggle");
         toggle.addEventListener("click", () => {
@@ -117,7 +110,6 @@
 
         /* ---------- CLARIFIER ENGINE ---------- */
         function simplify(text) {
-            // Basic structural simplification
             return text
                 .trim()
                 .replace(/\s+/g, " ")
