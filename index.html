@@ -6,31 +6,52 @@
     <title>Clarifier</title>
 
     <style>
+        :root {
+            --bg-light: #f7f7f7;
+            --bg-dark: #111;
+            --text-light: #222;
+            --text-dark: #eee;
+            --panel-light: #ffffff;
+            --panel-dark: #1a1a1a;
+            --border-light: #ccc;
+            --border-dark: #444;
+            --button-blue: #0078d4;
+            --button-blue-dark: #005a9e;
+        }
+
         body {
             margin: 0;
             padding: 0;
             font-family: system-ui, sans-serif;
-            background: #f7f7f7;
-            color: #222;
+            background: var(--bg-light);
+            color: var(--text-light);
             transition: background 0.3s, color 0.3s;
         }
 
         body.dark-mode {
-            background: #111;
-            color: #eee;
+            background: var(--bg-dark);
+            color: var(--text-dark);
         }
 
         h1 {
-            text-align: center;
-            margin-top: 24px;
+            margin: 24px 0 0 20px;
             font-size: 28px;
             font-weight: 600;
+            text-align: left;
         }
 
         .container {
             max-width: 600px;
             margin: 20px auto;
             padding: 20px;
+            background: var(--panel-light);
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        body.dark-mode .container {
+            background: var(--panel-dark);
+            border: 1px solid #333;
         }
 
         textarea {
@@ -39,50 +60,51 @@
             padding: 12px;
             font-size: 16px;
             border-radius: 8px;
-            border: 1px solid #ccc;
+            border: 1px solid var(--border-light);
             resize: none;
-            box-sizing: border-box; /* FIX: ensures right padding is visible */
+            box-sizing: border-box;
         }
 
         body.dark-mode textarea {
             background: #222;
-            color: #eee;
-            border: 1px solid #444;
+            color: var(--text-dark);
+            border: 1px solid var(--border-dark);
         }
 
         button {
             margin-top: 12px;
-            padding: 12px 16px;
+            padding: 10px 16px;
             font-size: 16px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            background: #0078d4;
+            background: var(--button-blue);
             color: white;
+            display: inline-block; /* ensures auto-width */
         }
 
         body.dark-mode button {
-            background: #005a9e;
+            background: var(--button-blue-dark);
         }
 
         #output {
             margin-top: 20px;
             padding: 16px;
             border-radius: 8px;
-            background: #fff;
+            background: var(--panel-light);
             min-height: 80px;
             border: 1px solid #ddd;
             white-space: pre-wrap;
         }
 
         body.dark-mode #output {
-            background: #1a1a1a;
+            background: var(--panel-dark);
             border: 1px solid #333;
         }
 
         .toggle {
             margin-top: 20px;
-            text-align: center;
+            text-align: left;
             cursor: pointer;
             font-size: 14px;
             opacity: 0.8;
@@ -95,6 +117,7 @@
 
     <div class="container">
         <textarea id="input" placeholder="Paste text to clarify..."></textarea>
+
         <button id="run">Clarify</button>
 
         <div id="output"></div>
@@ -117,7 +140,7 @@
                 .replace(/:\s+/g, ": ")
                 .replace(/;\s+/g, "; ")
                 .replace(/,\s+/g, ", ")
-                .replace(/\s*([.!?])\s*/g, "$1\n")
+                .replace(/\s*([.!?])\s*/g, "$1 ")   // FIX: remove paragraph breaks
                 .trim();
         }
 
