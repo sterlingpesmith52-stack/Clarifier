@@ -19,18 +19,24 @@
             margin: 0 auto;
         }
 
-        .title {
-            font-size: 26px;
-            font-weight: 600;
+        /* Logo + Title Row */
+        .header-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
             margin-bottom: 20px;
-            text-align: left;
         }
 
         .logo {
-            width: 100%;
-            max-width: 240px;
+            width: 60px;
+            height: auto;
             display: block;
-            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 26px;
+            font-weight: 600;
+            text-align: left;
         }
 
         textarea {
@@ -73,9 +79,10 @@
 <body>
     <div class="container">
 
-        <img src="Photoroom-20260921-085342.jpeg" class="logo" alt="Clarifier Logo">
-
-        <div class="title">Clarifier</div>
+        <div class="header-row">
+            <img src="./Photoroom_20260921_085342.jpeg" class="logo" alt="Clarifier Logo">
+            <div class="title">Clarifier</div>
+        </div>
 
         <textarea id="inputText" placeholder="Paste text here…"></textarea>
 
@@ -94,7 +101,6 @@
                 return;
             }
 
-            // Simple structural clarifier
             const clarified = text
                 .replace(/\n{2,}/g, "\n")
                 .replace(/\. /g, ".\n")
