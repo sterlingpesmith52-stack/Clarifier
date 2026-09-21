@@ -2,147 +2,107 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Clarifier · MicroFoundary</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarifier</title>
 
     <style>
-        /* Base layout */
         body {
+            font-family: system-ui, sans-serif;
             margin: 0;
-            padding: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: #ffffff;
+            padding: 20px;
+            background: white;
+            color: #222;
         }
 
-        .mf-shell {
-            max-width: 420px;
+        .container {
+            max-width: 480px;
             margin: 0 auto;
-            padding: 16px;
         }
 
-        /* Header with inline logo + title */
-        .mf-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .mf-logo {
-            height: 28px;
-            width: auto;
-            display: block;
-        }
-
-        .mf-title {
-            font-size: 18px;
+        .title {
+            font-size: 26px;
             font-weight: 600;
-            letter-spacing: 0.02em;
+            margin-bottom: 20px;
+            text-align: left;
         }
 
-        /* Clarifier panel */
-        .mf-panel {
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            padding: 12px;
-        }
-
-        .mf-label {
-            font-size: 13px;
-            margin-bottom: 4px;
-        }
-
-        .mf-input {
+        .logo {
             width: 100%;
+            max-width: 240px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 160px;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            resize: none;
             box-sizing: border-box;
-            padding: 8px;
-            font-size: 14px;
-            border-radius: 4px;
-            border: 1px solid #cccccc;
-            resize: vertical;
-            min-height: 72px;
         }
 
-        .mf-input:focus {
-            outline: none;
-            border-color: #007aff;
-            box-shadow: 0 0 0 1px rgba(0, 122, 255, 0.25);
-        }
-
-        /* Buttons: left-aligned, auto-width */
-        .mf-actions {
-            margin-top: 10px;
-            display: flex;
-            gap: 8px;
-        }
-
-        .mf-button {
-            padding: 6px 12px;
-            font-size: 14px;
-            border-radius: 4px;
-            border: 1px solid #007aff;
-            background: #007aff;
-            color: #ffffff;
+        .button {
+            display: inline-block;
+            padding: 10px 16px;
+            margin-top: 14px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            background: #0078d4;
+            color: white;
             cursor: pointer;
-            white-space: nowrap;
+            width: auto;
+            text-align: left;
         }
 
-        .mf-button.secondary {
-            background: #ffffff;
-            color: #007aff;
-        }
-
-        .mf-output {
-            margin-top: 10px;
-            font-size: 14px;
-            line-height: 1.4;
+        .output {
+            margin-top: 20px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            min-height: 80px;
+            font-size: 16px;
+            white-space: pre-wrap;
         }
     </style>
 </head>
+
 <body>
-<div class="mf-shell">
-    <header class="mf-header">
-        <!-- Replace src with your actual logo file name -->
-        <img src="microfoundary-logo.png" alt="MicroFoundary" class="mf-logo">
-        <span class="mf-title">Clarifier</span>
-    </header>
+    <div class="container">
 
-    <section class="mf-panel">
-        <div class="mf-label">Text to clarify</div>
-        <textarea id="clarifier-input" class="mf-input"
-                  placeholder="Paste something confusing here…"></textarea>
+        <img src="Photoroom-20260921-085342.jpeg" class="logo" alt="Clarifier Logo">
 
-        <div class="mf-actions">
-            <button class="mf-button" onclick="clarify()">Clarify</button>
-            <button class="mf-button secondary" onclick="clearClarifier()">Clear</button>
-        </div>
+        <div class="title">Clarifier</div>
 
-        <div id="clarifier-output" class="mf-output"></div>
-    </section>
-</div>
+        <textarea id="inputText" placeholder="Paste text here…"></textarea>
 
-<script>
-    function clarify() {
-        const input = document.getElementById('clarifier-input').value.trim();
-        const output = document.getElementById('clarifier-output');
+        <button class="button" onclick="clarify()">Clarify Text</button>
 
-        if (!input) {
-            output.textContent = 'Add some text above and then tap Clarify.';
-            return;
+        <div id="output" class="output"></div>
+
+    </div>
+
+    <script>
+        function clarify() {
+            const text = document.getElementById('inputText').value.trim();
+
+            if (!text) {
+                document.getElementById('output').textContent = "Please enter text to clarify.";
+                return;
+            }
+
+            // Simple structural clarifier
+            const clarified = text
+                .replace(/\n{2,}/g, "\n")
+                .replace(/\. /g, ".\n")
+                .replace(/; /g, ";\n")
+                .trim();
+
+            document.getElementById('output').textContent = clarified;
         }
-
-        // Simple placeholder behavior: structural simplification
-        const simplified = input
-            .replace(/\s+/g, ' ')
-            .replace(/([.?!])\s*/g, '$1\n');
-
-        output.textContent = simplified;
-    }
-
-    function clearClarifier() {
-        document.getElementById('clarifier-input').value = '';
-        document.getElementById('clarifier-output').textContent = '';
-    }
-</script>
+    </script>
 </body>
 </html>
