@@ -13,33 +13,27 @@
             background: #ffffff;
         }
 
-        .header-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        /* FORCE LOGO TO DISPLAY EVEN IF IMAGE IS TINY */
+        /* LOGO ON ITS OWN LINE */
         .logo {
             height: 48px;
             width: auto;
             object-fit: contain;
+            margin-bottom: 8px;
         }
 
+        /* TITLE ON SECOND LINE */
         .title {
             font-size: 28px;
             font-weight: 600;
             color: #000000;
+            margin-bottom: 20px;
         }
 
         .container {
             display: flex;
             flex-direction: column;
             gap: 12px;
-
-            /* REMOVE CENTERING */
-            align-items: flex-start;
+            align-items: flex-start; /* left-align everything */
         }
 
         textarea {
@@ -58,7 +52,7 @@
             box-shadow: none;
         }
 
-        /* MICRO-TIMER BLUE BUTTON — LEFT-JUSTIFIED + AUTO-SIZED */
+        /* MICRO-TIMER BLUE BUTTON — AUTO-SIZED + LEFT-JUSTIFIED */
         button {
             padding: 10px 16px;
             font-size: 16px;
@@ -91,10 +85,11 @@
 
 <body>
 
-    <div class="header-row">
-        <img src="IMG_1669.jpg" class="logo" alt="Clarifier Logo">
-        <div class="title">Clarifier</div>
-    </div>
+    <!-- LOGO FIRST LINE -->
+    <img src="IMG_1669.jpg" class="logo" alt="Clarifier Logo">
+
+    <!-- TITLE SECOND LINE -->
+    <div class="title">Clarifier</div>
 
     <div class="container">
         <textarea id="inputText" placeholder="Paste text here…"></textarea>
