@@ -2,118 +2,147 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Clarifier · MicroFoundary</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clarifier Micro‑Widget</title>
 
     <style>
+        /* Base layout */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f5f5f5;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #ffffff;
         }
 
-        /* MicroFoundary Header */
+        .mf-shell {
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        /* Header with inline logo + title */
         .mf-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 16px;
-            background: white;
-            border-bottom: 1px solid #ddd;
+            gap: 8px;
+            margin-bottom: 12px;
         }
 
         .mf-logo {
-            height: 32px;
+            height: 28px;
             width: auto;
+            display: block;
         }
 
         .mf-title {
-            font-size: 1.4rem;
-            margin: 0;
-            padding: 0;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
         }
 
-        /* Widget Container */
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-top: 20px;
+        /* Clarifier panel */
+        .mf-panel {
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 12px;
         }
 
-        textarea {
+        .mf-label {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .mf-input {
             width: 100%;
-            height: 140px;
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            resize: none;
+            box-sizing: border-box;
+            padding: 8px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #cccccc;
+            resize: vertical;
+            min-height: 72px;
         }
 
-        button {
-            margin-top: 15px;
-            padding: 12px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 6px;
-            background: #0078d4;
-            color: white;
+        .mf-input:focus {
+            outline: none;
+            border-color: #007aff;
+            box-shadow: 0 0 0 1px rgba(0, 122, 255, 0.25);
+        }
+
+        /* Buttons: left-aligned, auto-width */
+        .mf-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .mf-button {
+            padding: 6px 12px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #007aff;
+            background: #007aff;
+            color: #ffffff;
             cursor: pointer;
+            white-space: nowrap;
         }
 
-        button:hover {
-            background: #005ea0;
+        .mf-button.secondary {
+            background: #ffffff;
+            color: #007aff;
         }
 
-        .output {
-            margin-top: 20px;
-            padding: 15px;
-            background: #eef6ff;
-            border-radius: 6px;
-            min-height: 80px;
-            white-space: pre-wrap;
+        .mf-output {
+            margin-top: 10px;
+            font-size: 14px;
+            line-height: 1.4;
         }
     </style>
 </head>
-
 <body>
+<div class="mf-shell">
+    <header class="mf-header">
+        <!-- Replace src with your actual logo file name -->
+        <img src="microfoundary-logo.png" alt="MicroFoundary" class="mf-logo">
+        <span class="mf-title">Clarifier</span>
+    </header>
 
-    <!-- MicroFoundary Header -->
-    <div class="mf-header">
-        <a href="/catalogue.html">
-            <img src="/assets/microfoundary-logo.png" alt="MicroFoundary Logo" class="mf-logo">
-        </a>
-        <h1 class="mf-title">Clarifier</h1>
-    </div>
+    <section class="mf-panel">
+        <div class="mf-label">Text to clarify</div>
+        <textarea id="clarifier-input" class="mf-input"
+                  placeholder="Paste something confusing here…"></textarea>
 
-    <!-- Main Widget -->
-    <div class="container">
-        <textarea id="inputText" placeholder="Enter text to clarify..."></textarea>
+        <div class="mf-actions">
+            <button class="mf-button" onclick="clarify()">Clarify</button>
+            <button class="mf-button secondary" onclick="clearClarifier()">Clear</button>
+        </div>
 
-        <button onclick="clarifyText()">Clarify</button>
+        <div id="clarifier-output" class="mf-output"></div>
+    </section>
+</div>
 
-        <div id="output" class="output"></div>
-    </div>
+<script>
+    function clarify() {
+        const input = document.getElementById('clarifier-input').value.trim();
+        const output = document.getElementById('clarifier-output');
 
-    <script>
-        async function clarifyText() {
-            const text = document.getElementById("inputText").value;
-
-            const response = await fetch("/api/clarify", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ text })
-            });
-
-            const data = await response.json();
-            document.getElementById("output").textContent = data.clarified;
+        if (!input) {
+            output.textContent = 'Add some text above and then tap Clarify.';
+            return;
         }
-    </script>
 
+        // Simple placeholder behavior: structural simplification
+        const simplified = input
+            .replace(/\s+/g, ' ')
+            .replace(/([.?!])\s*/g, '$1\n');
+
+        output.textContent = simplified;
+    }
+
+    function clearClarifier() {
+        document.getElementById('clarifier-input').value = '';
+        document.getElementById('clarifier-output').textContent = '';
+    }
+</script>
 </body>
 </html>
