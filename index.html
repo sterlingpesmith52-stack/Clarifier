@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,13 +14,6 @@
             background: #ffffff;
         }
 
-        /* Prevent global image stretching */
-        img {
-            max-width: none;
-            width: auto;
-            height: auto;
-        }
-
         .header-row {
             display: flex;
             align-items: center;
@@ -28,11 +22,10 @@
         }
 
         .logo {
-            height: 48px;        /* fixed readable size */
-            width: auto;         /* prevents horizontal stretching */
-            max-width: none;     /* prevents flexbox from forcing width */
-            flex-shrink: 0;      /* prevents flexbox from enlarging it */
-            object-fit: contain; /* clean scaling */
+            height: 48px;
+            width: 48px;
+            object-fit: contain;
+            flex-shrink: 0;
         }
 
         .title {
@@ -117,3 +110,4 @@
 
 </body>
 </html>
+
