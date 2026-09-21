@@ -20,11 +20,11 @@
             margin-bottom: 20px;
         }
 
+        /* FORCE LOGO TO DISPLAY EVEN IF IMAGE IS TINY */
         .logo {
             height: 48px;
-            width: 40px;
+            width: auto;
             object-fit: contain;
-            flex: 0 0 auto;
         }
 
         .title {
@@ -55,19 +55,20 @@
             box-shadow: none;
         }
 
-        /* RESTORED BLUE BUTTON */
+        /* MICRO-TIMER BLUE BUTTON — LEFT-JUSTIFIED + AUTO-SIZED */
         button {
             padding: 10px 16px;
             font-size: 16px;
             border: none;
             border-radius: 6px;
 
-            background: #007AFF;   /* iOS blue */
+            background: #0078FF;   /* MicroTimer blue */
             color: #ffffff;
 
             cursor: pointer;
-            width: auto;
-            display: inline-block;
+
+            width: auto;           /* only as wide as the text */
+            display: inline-block; /* left-justified */
         }
 
         button:hover {
