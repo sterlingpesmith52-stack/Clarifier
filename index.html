@@ -13,17 +13,25 @@
             background: #ffffff;
         }
 
+        /* Prevent ANY global image stretching */
+        img {
+            max-width: none;
+            width: auto;
+            height: auto;
+        }
+
         .header-row {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             margin-bottom: 20px;
         }
 
         .logo {
-            height: 64px;   /* readable size for Clarifier logo */
-            width: auto;
-            display: block;
+            height: 48px;      /* fixed readable size */
+            width: auto;       /* prevents stretching */
+            flex-shrink: 0;    /* prevents flexbox from enlarging it */
+            object-fit: contain;
         }
 
         .title {
