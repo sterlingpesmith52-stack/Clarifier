@@ -13,7 +13,7 @@
             background: #ffffff;
         }
 
-        /* Prevent ANY global image stretching */
+        /* Prevent global image stretching */
         img {
             max-width: none;
             width: auto;
@@ -28,10 +28,11 @@
         }
 
         .logo {
-            height: 48px;      /* fixed readable size */
-            width: auto;       /* prevents stretching */
-            flex-shrink: 0;    /* prevents flexbox from enlarging it */
-            object-fit: contain;
+            height: 48px;        /* fixed readable size */
+            width: auto;         /* prevents horizontal stretching */
+            max-width: none;     /* prevents flexbox from forcing width */
+            flex-shrink: 0;      /* prevents flexbox from enlarging it */
+            object-fit: contain; /* clean scaling */
         }
 
         .title {
