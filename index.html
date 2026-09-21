@@ -16,12 +16,12 @@
         .header-row {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             margin-bottom: 20px;
         }
 
         .logo {
-            height: 48px;   /* readable size */
+            height: 64px;   /* readable size for Clarifier logo */
             width: auto;
             display: block;
         }
@@ -82,7 +82,7 @@
 
     <div class="container">
         <textarea id="inputText" placeholder="Paste text here…"></textarea>
-        <button onclick="clarify()">Clarify</button>
+        <button onclick="clarify()">Clarify Text</button>
         <div class="output" id="outputBox"></div>
     </div>
 
@@ -96,7 +96,6 @@
                 return;
             }
 
-            // Simple structural clarification
             const clarified = text
                 .replace(/\.\s+/g, ".\n")
                 .replace(/;\s+/g, ";\n")
