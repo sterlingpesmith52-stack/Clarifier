@@ -13,15 +13,17 @@
             background: #ffffff;
         }
 
-        /* LOGO ON ITS OWN LINE */
+        /* CHROME-SAFE LOGO SIZING */
         .logo {
-            height: 48px;
+            height: 40px;
+            max-height: 40px;
             width: auto;
             object-fit: contain;
-            margin-bottom: 8px;
+            display: block;        /* removes Chrome baseline padding */
+            margin-bottom: 6px;    /* pulls title up */
         }
 
-        /* TITLE ON SECOND LINE */
+        /* TITLE */
         .title {
             font-size: 28px;
             font-weight: 600;
@@ -85,10 +87,10 @@
 
 <body>
 
-    <!-- LOGO FIRST LINE -->
+    <!-- LOGO -->
     <img src="IMG_1669.jpeg" class="logo" alt="Clarifier Logo">
 
-    <!-- TITLE SECOND LINE -->
+    <!-- TITLE -->
     <div class="title">Clarifier</div>
 
     <div class="container">
