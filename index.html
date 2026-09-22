@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,14 +14,14 @@
             background: #ffffff;
         }
 
-        /* CHROME-SAFE LOGO SIZING */
+        /* CHROME-SAFE, ONE-THIRD SMALLER LOGO */
         .logo {
-            height: 40px;
-            max-height: 40px;
+            height: 32px;          /* vertical size stays correct */
+            max-width: 120px;      /* shrinks entire logo footprint ~33% */
             width: auto;
             object-fit: contain;
             display: block;        /* removes Chrome baseline padding */
-            margin-bottom: 6px;    /* pulls title up */
+            margin-bottom: 6px;    /* keeps title close */
         }
 
         /* TITLE */
