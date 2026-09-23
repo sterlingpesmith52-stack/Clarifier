@@ -18,7 +18,7 @@
             flex-direction: column;
             gap: 10px;
             align-items: flex-start;
-            padding: 20px; /* restores left padding for everything */
+            padding: 20px;
         }
 
         .logo {
@@ -27,7 +27,7 @@
             width: auto;
             object-fit: contain;
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 20px; /* UPDATED: reduced by 2px */
         }
 
         .title {
@@ -38,13 +38,14 @@
         }
 
         textarea {
-            width: calc(100% - 2px); /* prevents right-edge flush */
-            height: 120px; /* your requested change */
+            width: 100%;
+            height: 120px;
             padding: 12px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 6px;
             resize: none;
+            box-sizing: border-box;
         }
 
         textarea:focus {
@@ -75,7 +76,8 @@
             border-radius: 6px;
             min-height: 100px;
             background: #ffffff;
-            width: calc(100% - 2px); /* matches textarea */
+            width: 100%;
+            box-sizing: border-box;
         }
     </style>
 </head>
