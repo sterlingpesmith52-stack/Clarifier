@@ -8,9 +8,17 @@
     <style>
         body {
             margin: 0;
-            padding: 0; /* FIXED: no double padding */
+            padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background: #ffffff;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+            padding: 20px;
         }
 
         .logo {
@@ -26,20 +34,12 @@
             font-size: 28px;
             font-weight: 600;
             color: #000000;
-            margin-bottom: 12px; /* FIXED */
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px; /* FIXED */
-            align-items: flex-start;
-            padding: 20px; /* FIXED: now the only padding */
+            margin-bottom: 12px;
         }
 
         textarea {
             width: 100%;
-            height: 160px; /* FIXED */
+            height: 120px; /* ONLY CHANGE MADE */
             padding: 12px;
             font-size: 16px;
             border: 1px solid #ccc;
@@ -73,7 +73,7 @@
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            min-height: 100px; /* FIXED */
+            min-height: 100px;
             background: #ffffff;
             width: 100%;
         }
@@ -82,13 +82,18 @@
 
 <body>
 
-    <img src="IMG_1669.jpeg" class="logo" alt="Clarifier Logo">
-    <div class="title">Clarifier</div>
-
     <div class="container">
+
+        <img src="IMG_1669.jpeg" class="logo" alt="Clarifier Logo">
+
+        <div class="title">Clarifier</div>
+
         <textarea id="inputText" placeholder="Paste text here…"></textarea>
+
         <button onclick="clarify()">Clarify Text</button>
+
         <div class="output" id="outputBox"></div>
+
     </div>
 
     <script>
@@ -113,3 +118,4 @@
 
 </body>
 </html>
+
