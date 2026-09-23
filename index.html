@@ -8,12 +8,11 @@
     <style>
         body {
             margin: 0;
-            padding: 20px;
+            padding: 0; /* FIXED: no double padding */
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #ffffff; /* universal white */
+            background: #ffffff;
         }
 
-        /* CHROME-SAFE, ONE-THIRD SMALLER LOGO */
         .logo {
             height: 32px;
             max-width: 120px;
@@ -23,25 +22,24 @@
             margin-bottom: 6px;
         }
 
-        /* TITLE */
         .title {
             font-size: 28px;
             font-weight: 600;
             color: #000000;
-            margin-bottom: 20px;
+            margin-bottom: 12px; /* FIXED */
         }
 
         .container {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px; /* FIXED */
             align-items: flex-start;
-            padding: 0 20px; /* NEW: prevents edge-to-edge stretching */
+            padding: 20px; /* FIXED: now the only padding */
         }
 
         textarea {
             width: 100%;
-            height: 180px;
+            height: 160px; /* FIXED */
             padding: 12px;
             font-size: 16px;
             border: 1px solid #ccc;
@@ -55,18 +53,14 @@
             box-shadow: none;
         }
 
-        /* PRIMARY BUTTON — MICRO-TIMER BLUE */
         button {
             padding: 10px 16px;
             font-size: 16px;
             border: none;
             border-radius: 6px;
-
-            background: #0078FF; /* MicroTimer blue */
+            background: #0078FF;
             color: #ffffff;
-
             cursor: pointer;
-
             width: auto;
             display: inline-block;
         }
@@ -79,8 +73,8 @@
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            min-height: 120px;
-            background: #ffffff; /* universal white */
+            min-height: 100px; /* FIXED */
+            background: #ffffff;
             width: 100%;
         }
     </style>
@@ -88,10 +82,7 @@
 
 <body>
 
-    <!-- LOGO -->
     <img src="IMG_1669.jpeg" class="logo" alt="Clarifier Logo">
-
-    <!-- TITLE -->
     <div class="title">Clarifier</div>
 
     <div class="container">
