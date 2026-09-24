@@ -17,9 +17,17 @@
         .container {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 14px;
             align-items: flex-start;
             padding: 20px;
+        }
+
+        /* HEADER: LOGO + TITLE TOGETHER */
+        .header {
+            display: flex;
+            flex-direction: column;
+            gap: 4px; /* tighter spacing */
+            align-items: flex-start;
         }
 
         .logo {
@@ -28,14 +36,12 @@
             width: auto;
             object-fit: contain;
             display: block;
-            margin-bottom: 6px; /* LOOKS GOOD */
         }
 
         .title {
             font-size: 28px;
             font-weight: 600;
             color: #000000;
-            margin-bottom: 12px;
         }
 
         textarea {
@@ -58,6 +64,23 @@
             width: 100%;
             box-sizing: border-box;
         }
+
+        /* MICROFOUNDARY BUTTON STANDARD */
+        .mf-button {
+            padding: 10px 16px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            background: #0078FF; /* MicroTimer blue */
+            color: #ffffff;
+            cursor: pointer;
+            width: auto;
+            display: inline-block;
+        }
+
+        .mf-button:hover {
+            opacity: 0.85;
+        }
     </style>
 </head>
 
@@ -65,13 +88,14 @@
 
     <div class="container">
 
-        <img src="IMG_1669.jpeg" class="logo" alt="Clarifier Logo">
-
-        <div class="title">Clarifier</div>
+        <div class="header">
+            <img src="IMG_1669.jpeg" class="logo" alt="Clarifier Logo">
+            <div class="title">Clarifier</div>
+        </div>
 
         <textarea id="inputText" placeholder="Paste text here…"></textarea>
 
-        <button onclick="clarify()">Clarify Text</button>
+        <button class="mf-button" onclick="clarify()">Clarify Text</button>
 
         <div class="output" id="outputBox"></div>
 
