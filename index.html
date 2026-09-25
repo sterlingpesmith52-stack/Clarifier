@@ -21,12 +21,13 @@
             padding: 20px;
         }
 
-        /* RETURN LAYER (hidden unless ?from=catalogue is present) */
+        /* RIGHT-ALIGNED RETURN BAR */
         .return-layer {
             display: none;
+            width: 100%;
+            text-align: right;
             background: #f5f5f5;
-            padding: 10px 14px;
-            font-size: 15px;
+            padding: 8px 14px;
             border-bottom: 1px solid #ddd;
         }
 
@@ -34,13 +35,14 @@
             color: #000;
             text-decoration: none;
             font-weight: 600;
+            font-size: 15px;
         }
 
         /* HEADER: LOGO + TITLE TOGETHER */
         .header {
             display: flex;
             flex-direction: column;
-            gap: 4px; /* tighter spacing */
+            gap: 4px;
             align-items: flex-start;
         }
 
@@ -85,7 +87,7 @@
             font-size: 16px;
             border: none;
             border-radius: 6px;
-            background: #0078FF; /* MicroTimer blue */
+            background: #0078FF;
             color: #ffffff;
             cursor: pointer;
             width: auto;
@@ -100,15 +102,15 @@
 
 <body>
 
-    <!-- RETURN LAYER (appears only when ?from=catalogue is present) -->
+    <!-- RIGHT-ALIGNED RETURN BAR -->
     <div id="returnLayer" class="return-layer">
-        <a href="catalogue.html" class="return-link">← Return to Catalogue</a>
+        <a href="catalogue.html" class="return-link">← Return</a>
     </div>
 
     <div class="container">
 
         <div class="header">
-            <img src="IMG_1669.jpeg" class="logo" alt="Clarifier Logo">
+            <img src="IMG_1741.jpeg" class="logo" alt="Clarifier Logo">
             <div class="title">Clarifier</div>
         </div>
 
@@ -139,7 +141,7 @@
             output.textContent = clarified;
         }
 
-        /* SHOW RETURN LAYER IF ?from=catalogue IS PRESENT */
+        /* SHOW RETURN BAR IF ?from=catalogue IS PRESENT */
         const params = new URLSearchParams(window.location.search);
         if (params.has('from')) {
             document.getElementById('returnLayer').style.display = 'block';
