@@ -16,38 +16,43 @@
         padding: 20px;
     }
 
-    /* FIXED HEADER LAYOUT — vertical stack */
+    /* FIXED HEADER — vertical stack, stable on iPhone Chrome */
     .header {
         display: flex;
-        flex-direction: column;   /* stack logo, title, buttons */
-        align-items: flex-start;  /* left-align everything */
-        gap: 8px;
-        margin-bottom: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        margin-bottom: 16px;
     }
 
     /* Smaller, stable logo */
     .header img {
-        height: 40px;
+        height: 32px;
         width: auto;
         border-radius: 6px;
     }
 
     .title {
-        font-size: 26px;
+        font-size: 24px;
         font-weight: 600;
     }
 
-    /* Universal .mf-button gives padding, radius, font */
-    /* Add stability so iPhone Chrome doesn't shrink them */
+    /* Prevent iPhone Chrome from shrinking buttons */
     .mf-button {
         min-width: 140px;
-        text-align: center;
+        text-align: left;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-block;
     }
 
     /* Blue action buttons */
     .action-button {
         background: #007aff;
         color: #fff;
+        width: auto;
     }
 
     textarea {
@@ -71,18 +76,21 @@
         font-size: 16px;
     }
 
+    /* Left-aligned action buttons */
     .button-row {
         margin-top: 12px;
         display: flex;
+        justify-content: flex-start;
         gap: 10px;
     }
 
-    /* Stacked navigation buttons — hidden unless ?catalogTest=true */
+    /* Stacked navigation buttons OUTSIDE header */
     #returnButtons {
         display: none;
         flex-direction: column;
+        align-items: flex-start;
         gap: 8px;
-        margin-top: 10px;
+        margin-bottom: 16px;
     }
 </style>
 </head>
@@ -92,12 +100,12 @@
 <div class="header">
     <img src="IMG_1741.jpeg" alt="MicroFoundary Logo">
     <div class="title">Clarifier</div>
+</div>
 
-    <!-- Stacked navigation buttons (conditionally shown) -->
-    <div id="returnButtons">
-        <a class="mf-button" href="/index.html">MicroFoundary Home</a>
-        <a class="mf-button" href="/MicroWidgets/Catalogue/index.html">Catalogue</a>
-    </div>
+<!-- Stacked navigation buttons (conditionally shown) -->
+<div id="returnButtons">
+    <a class="mf-button" href="/index.html">MicroFoundary Home</a>
+    <a class="mf-button" href="/MicroWidgets/Catalogue/index.html">Catalogue</a>
 </div>
 
 <textarea id="inputText" placeholder="Paste messy notes here..."></textarea>
