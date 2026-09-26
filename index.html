@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,7 @@
         padding: 20px;
     }
 
-    /* FIXED HEADER — vertical stack, stable on iPhone Chrome */
+    /* FIXED HEADER — vertical stack */
     .header {
         display: flex;
         flex-direction: column;
@@ -39,6 +40,7 @@
 
     /* Prevent iPhone Chrome from shrinking buttons */
     .mf-button {
+        width: auto;
         min-width: 140px;
         text-align: left;
         padding: 8px 14px;
@@ -48,17 +50,24 @@
         display: inline-block;
     }
 
-    /* Blue action buttons */
+    /* Blue Clarify button */
     .action-button {
         background: #007aff;
         color: #fff;
-        width: auto;
+    }
+
+    /* Black Clear button */
+    .secondary-button {
+        background: #000;
+        color: #fff;
     }
 
     textarea {
         width: 100%;
         height: 180px;
         padding: 12px;
+        padding-right: 12px;     /* FIX: right padding */
+        box-sizing: border-box;  /* FIX: ensures padding applies */
         font-size: 16px;
         border-radius: 6px;
         border: 1px solid #ccc;
@@ -112,7 +121,7 @@
 
 <div class="button-row">
     <button class="mf-button action-button" onclick="clarifyText()">Clarify</button>
-    <button class="mf-button action-button" onclick="clearAll()">Clear</button>
+    <button class="mf-button secondary-button" onclick="clearAll()">Clear</button>
 </div>
 
 <div id="outputBox" class="output-box"></div>
@@ -137,15 +146,4 @@ function clarifyText() {
 
 function clearAll() {
     document.getElementById("inputText").value = "";
-    document.getElementById("outputBox").textContent = "";
-}
-
-/* Show stacked navigation buttons only when launched from Catalogue */
-const params = new URLSearchParams(window.location.search);
-if (params.get("catalogTest") === "true") {
-    document.getElementById("returnButtons").style.display = "flex";
-}
-</script>
-
-</body>
-</html>
+    document.getElementById("outputBox").text
