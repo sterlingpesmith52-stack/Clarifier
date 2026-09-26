@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,18 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clarifier</title>
 
-<!-- Universal Stylesheet -->
 <link rel="stylesheet" href="universal.css">
 
 <style>
     body {
         background: #ffffff;
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         padding: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* Header: vertical stack */
+    /* Header */
     .header {
         display: flex;
         flex-direction: column;
@@ -26,7 +24,6 @@
         margin-bottom: 16px;
     }
 
-    /* Small stable logo */
     .header img {
         height: 32px;
         width: auto;
@@ -38,44 +35,58 @@
         font-weight: 600;
     }
 
+    /* Right‑aligned navigation buttons */
+    #returnButtons {
+        display: none;
+        flex-direction: column;
+        align-items: flex-end;   /* right align */
+        text-align: right;       /* right align text */
+        gap: 8px;
+        margin-bottom: 16px;
+        width: 100%;             /* ensures right alignment */
+    }
+
     /* Base button styling */
     .mf-button {
-        width: auto;            /* tight fit */
-        min-width: auto;        /* no forced width */
-        text-align: left;
+        width: auto;
+        min-width: auto;
         padding: 8px 14px;
         border-radius: 6px;
         font-size: 14px;
         text-decoration: none;
-        display: inline-block;  /* natural width */
-        flex: 0 0 auto;         /* prevents shrinking */
+        display: inline-block;
+        flex: 0 0 auto;
+        text-align: left;
+        background: #007aff;
+        color: #fff;
     }
 
-    /* Blue Clarify button */
+    /* Clarify button (blue) */
     .action-button {
         background: #007aff;
         color: #fff;
     }
 
-    /* Black Clear button */
+    /* Clear button (black) */
     .secondary-button {
         background: #000;
         color: #fff;
     }
 
-    /* Input area with right padding fix */
+    /* Input area */
     textarea {
         width: 100%;
         height: 180px;
         padding: 12px;
         padding-right: 12px;
-        box-sizing: border-box; /* ensures padding applies */
+        box-sizing: border-box;
         font-size: 16px;
         border-radius: 6px;
         border: 1px solid #ccc;
         resize: vertical;
     }
 
+    /* Output box */
     .output-box {
         margin-top: 16px;
         padding: 12px;
@@ -87,7 +98,7 @@
         font-size: 16px;
     }
 
-    /* Tight-fit, left-aligned buttons */
+    /* Tight-fit action buttons */
     .button-row {
         margin-top: 12px;
         display: flex;
@@ -95,15 +106,6 @@
         align-items: flex-start;
         gap: 10px;
         flex-wrap: nowrap;
-    }
-
-    /* Return buttons outside header */
-    #returnButtons {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-        margin-bottom: 16px;
     }
 </style>
 </head>
@@ -115,10 +117,10 @@
     <div class="title">Clarifier</div>
 </div>
 
-<!-- Stacked navigation buttons (conditionally shown) -->
+<!-- Right‑aligned navigation buttons -->
 <div id="returnButtons">
     <a class="mf-button" href="/index.html">MicroFoundary Home</a>
-    <a class="mf-button" href="/MicroWidgets/Catalogue/index.html">Catalogue</a>
+    <a class="mf-button" href="/MicroWidgets/index.html">MicroWidgets</a>
 </div>
 
 <textarea id="inputText" placeholder="Paste messy notes here..."></textarea>
@@ -153,7 +155,7 @@ function clearAll() {
     document.getElementById("outputBox").textContent = "";
 }
 
-/* Show stacked navigation buttons only when launched from Catalogue */
+/* Show right‑aligned navigation when launched from MicroWidgets or Catalogue */
 const params = new URLSearchParams(window.location.search);
 if (params.get("catalogueReturn") === "true") {
     document.getElementById("returnButtons").style.display = "flex";
@@ -162,3 +164,4 @@ if (params.get("catalogueReturn") === "true") {
 
 </body>
 </html>
+
