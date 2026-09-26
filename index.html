@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,4 +145,15 @@ function clarifyText() {
 
 function clearAll() {
     document.getElementById("inputText").value = "";
-    document.getElementById("outputBox").text
+    document.getElementById("outputBox").textContent = "";
+}
+
+/* Show stacked navigation buttons only when launched from Catalogue */
+const params = new URLSearchParams(window.location.search);
+if (params.get("catalogTest") === "true") {
+    document.getElementById("returnButtons").style.display = "flex";
+}
+</script>
+
+</body>
+</html>
