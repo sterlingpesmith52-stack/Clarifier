@@ -34,13 +34,12 @@
         font-weight: 600;
     }
 
-    .mf-button {
-        background: #000;
+    /* Navigation buttons (black) come from universal.css via .mf-button */
+
+    /* Action buttons (blue) override only the color */
+    .action-button {
+        background: #007aff; /* iOS blue */
         color: #fff;
-        padding: 8px 14px;
-        border-radius: 6px;
-        font-size: 14px;
-        text-decoration: none;
     }
 
     textarea {
@@ -69,6 +68,14 @@
         display: flex;
         gap: 10px;
     }
+
+    /* Stacked navigation buttons */
+    #returnButtons {
+        display: none;            /* hidden unless ?catalogTest=true */
+        flex-direction: column;   /* stack vertically */
+        gap: 8px;                 /* spacing between buttons */
+        margin-top: 10px;
+    }
 </style>
 </head>
 
@@ -77,19 +84,19 @@
 <div class="header">
     <img src="IMG_1741.jpeg" alt="MicroFoundary Logo">
     <div class="title">Clarifier</div>
+</div>
 
-    <!-- Existing Home Button -->
+<!-- Stacked navigation buttons (conditionally shown) -->
+<div id="returnButtons">
     <a class="mf-button" href="/index.html">MicroFoundary Home</a>
-
-    <!-- NEW: Return to Catalogue -->
     <a class="mf-button" href="/MicroWidgets/Catalogue/index.html">Catalogue</a>
 </div>
 
 <textarea id="inputText" placeholder="Paste messy notes here..."></textarea>
 
 <div class="button-row">
-    <button class="mf-button" onclick="clarifyText()">Clarify</button>
-    <button class="mf-button" onclick="clearAll()">Clear</button>
+    <button class="mf-button action-button" onclick="clarifyText()">Clarify</button>
+    <button class="mf-button action-button" onclick="clearAll()">Clear</button>
 </div>
 
 <div id="outputBox" class="output-box"></div>
@@ -115,6 +122,12 @@ function clarifyText() {
 function clearAll() {
     document.getElementById("inputText").value = "";
     document.getElementById("outputBox").textContent = "";
+}
+
+/* Show stacked navigation buttons only when launched from Catalogue */
+const params = new URLSearchParams(window.location.search);
+if (params.get("catalogTest") === "true") {
+    document.getElementById("returnButtons").style.display = "flex";
 }
 </script>
 
