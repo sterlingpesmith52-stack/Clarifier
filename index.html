@@ -16,15 +16,18 @@
         padding: 20px;
     }
 
+    /* FIXED HEADER LAYOUT — vertical stack */
     .header {
         display: flex;
-        align-items: center;
-        gap: 12px;
+        flex-direction: column;   /* stack logo, title, buttons */
+        align-items: flex-start;  /* left-align everything */
+        gap: 8px;
         margin-bottom: 20px;
     }
 
+    /* Smaller, stable logo */
     .header img {
-        height: 48px;
+        height: 40px;
         width: auto;
         border-radius: 6px;
     }
@@ -34,11 +37,16 @@
         font-weight: 600;
     }
 
-    /* Navigation buttons (black) come from universal.css via .mf-button */
+    /* Universal .mf-button gives padding, radius, font */
+    /* Add stability so iPhone Chrome doesn't shrink them */
+    .mf-button {
+        min-width: 140px;
+        text-align: center;
+    }
 
-    /* Action buttons (blue) override only the color */
+    /* Blue action buttons */
     .action-button {
-        background: #007aff; /* iOS blue */
+        background: #007aff;
         color: #fff;
     }
 
@@ -69,11 +77,11 @@
         gap: 10px;
     }
 
-    /* Stacked navigation buttons */
+    /* Stacked navigation buttons — hidden unless ?catalogTest=true */
     #returnButtons {
-        display: none;            /* hidden unless ?catalogTest=true */
-        flex-direction: column;   /* stack vertically */
-        gap: 8px;                 /* spacing between buttons */
+        display: none;
+        flex-direction: column;
+        gap: 8px;
         margin-top: 10px;
     }
 </style>
@@ -84,12 +92,12 @@
 <div class="header">
     <img src="IMG_1741.jpeg" alt="MicroFoundary Logo">
     <div class="title">Clarifier</div>
-</div>
 
-<!-- Stacked navigation buttons (conditionally shown) -->
-<div id="returnButtons">
-    <a class="mf-button" href="/index.html">MicroFoundary Home</a>
-    <a class="mf-button" href="/MicroWidgets/Catalogue/index.html">Catalogue</a>
+    <!-- Stacked navigation buttons (conditionally shown) -->
+    <div id="returnButtons">
+        <a class="mf-button" href="/index.html">MicroFoundary Home</a>
+        <a class="mf-button" href="/MicroWidgets/Catalogue/index.html">Catalogue</a>
+    </div>
 </div>
 
 <textarea id="inputText" placeholder="Paste messy notes here..."></textarea>
