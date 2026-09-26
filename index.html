@@ -15,16 +15,23 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* Header */
-    .header {
+    /* Header layout: logo + title left, nav buttons right */
+    .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 6px;
+    }
+
+    .header-left {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 6px;
-        margin-bottom: 16px;
+        gap: 4px;
     }
 
-    .header img {
+    .header-left img {
         height: 32px;
         width: auto;
         border-radius: 6px;
@@ -36,49 +43,42 @@
     }
 
     /* Right‑aligned navigation buttons */
-    #returnButtons {
-        display: none;
+    .header-nav {
+        display: none; /* shown only when catalogueReturn=true */
         flex-direction: column;
-        align-items: flex-end;   /* right align */
-        text-align: right;       /* right align text */
-        gap: 8px;
-        margin-bottom: 16px;
-        width: 100%;             /* ensures right alignment */
+        align-items: flex-end;
+        text-align: right;
+        gap: 6px;
     }
 
     /* Base button styling */
     .mf-button {
         width: auto;
         min-width: auto;
-        padding: 8px 14px;
+        padding: 6px 12px;
         border-radius: 6px;
         font-size: 14px;
         text-decoration: none;
         display: inline-block;
-        flex: 0 0 auto;
-        text-align: left;
         background: #007aff;
         color: #fff;
     }
 
-    /* Clarify button (blue) */
+    /* Action buttons */
     .action-button {
         background: #007aff;
         color: #fff;
     }
 
-    /* Clear button (black) */
     .secondary-button {
         background: #000;
         color: #fff;
     }
 
-    /* Input area */
     textarea {
         width: 100%;
         height: 180px;
         padding: 12px;
-        padding-right: 12px;
         box-sizing: border-box;
         font-size: 16px;
         border-radius: 6px;
@@ -86,7 +86,6 @@
         resize: vertical;
     }
 
-    /* Output box */
     .output-box {
         margin-top: 16px;
         padding: 12px;
@@ -98,29 +97,29 @@
         font-size: 16px;
     }
 
-    /* Tight-fit action buttons */
     .button-row {
         margin-top: 12px;
         display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
         gap: 10px;
-        flex-wrap: nowrap;
     }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-    <img src="IMG_1741.jpeg" alt="MicroFoundary Logo">
-    <div class="title">Clarifier</div>
-</div>
+<!-- Header row: left = logo + title, right = nav buttons -->
+<div class="header-row">
 
-<!-- Right‑aligned navigation buttons -->
-<div id="returnButtons">
-    <a class="mf-button" href="/index.html">MicroFoundary Home</a>
-    <a class="mf-button" href="/MicroWidgets/index.html">MicroWidgets</a>
+    <div class="header-left">
+        <img src="IMG_1741.jpeg" alt="MicroFoundary Logo">
+        <div class="title">Clarifier</div>
+    </div>
+
+    <div id="headerNav" class="header-nav">
+        <a class="mf-button" href="/MicroWidgets/index.html">Return</a>
+        <a class="mf-button" href="/Catalogue/index.html">Catalog</a>
+    </div>
+
 </div>
 
 <textarea id="inputText" placeholder="Paste messy notes here..."></textarea>
@@ -155,10 +154,10 @@ function clearAll() {
     document.getElementById("outputBox").textContent = "";
 }
 
-/* Show right‑aligned navigation when launched from MicroWidgets or Catalogue */
+/* Show right‑aligned header navigation when launched from MicroWidgets or Catalogue */
 const params = new URLSearchParams(window.location.search);
 if (params.get("catalogueReturn") === "true") {
-    document.getElementById("returnButtons").style.display = "flex";
+    document.getElementById("headerNav").style.display = "flex";
 }
 </script>
 
