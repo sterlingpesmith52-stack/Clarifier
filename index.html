@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +45,7 @@
 
     /* Right‑aligned navigation buttons */
     .header-nav {
-        display: none; /* shown only when catalogueReturn=true */
+        display: none; /* shown only when perimeter is present */
         flex-direction: column;
         align-items: flex-end;
         text-align: right;
@@ -116,7 +117,7 @@
     </div>
 
     <div id="headerNav" class="header-nav">
-        <a class="mf-button" href="/MicroWidgets/index.html">Return</a>
+        <a class="mf-button" id="returnTarget"></a>
         <a class="mf-button" href="/Catalogue/index.html">Catalog</a>
     </div>
 
@@ -154,13 +155,28 @@ function clearAll() {
     document.getElementById("outputBox").textContent = "";
 }
 
-/* Show right‑aligned header navigation when launched from MicroWidgets or Catalogue */
+/* Show right‑aligned header navigation based on perimeter */
 const params = new URLSearchParams(window.location.search);
-if (params.get("catalogueReturn") === "true") {
-    document.getElementById("headerNav").style.display = "flex";
+const perimeter = params.get("perimeter");
+
+if (perimeter) {
+    const nav = document.getElementById("headerNav");
+    nav.style.display = "flex";
+
+    const btn = document.getElementById("returnTarget");
+
+    if (perimeter === "WidgetIndex") {
+        btn.textContent = "Return to Widget Index";
+        btn.href = "/MicroWidgets/index.html";
+    } else if (perimeter === "Home") {
+        btn.textContent = "Return to Home";
+        btn.href = "/index.html";
+    } else {
+        btn.textContent = "Return to Catalogue";
+        btn.href = "/Catalogue/index.html";
+    }
 }
 </script>
 
 </body>
 </html>
-
