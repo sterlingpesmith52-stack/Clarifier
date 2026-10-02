@@ -105,7 +105,7 @@
 
     /* Buy button spacing */
     .buy-row {
-        margin-top: 18px; /* closer to output */
+        margin-top: 18px;
     }
 </style>
 </head>
@@ -136,8 +136,8 @@
 
 <div id="outputBox" class="output-box"></div>
 
-<!-- Buy This Tool button (now visible without scrolling) -->
-<div class="buy-row">
+<!-- Buy This Tool button -->
+<div id="buyRow" class="buy-row">
     <a class="mf-button action-button" 
        href="/Payment/payment.html?tool=Clarifier">
        Buy This Tool
@@ -187,6 +187,13 @@ if (perimeter) {
         btn.textContent = "Return to Catalogue";
         btn.href = "/Catalogue/index.html";
     }
+}
+
+/* Hide Buy button if customer already owns the tool */
+const ownership = params.get("perimeter");
+if (ownership === "customerOwned") {
+    const buyRow = document.getElementById("buyRow");
+    if (buyRow) buyRow.style.display = "none";
 }
 </script>
 
