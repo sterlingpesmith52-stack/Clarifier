@@ -37,7 +37,7 @@
     }
 
     .tool-title {
-        font-weight: bold !important;
+        font-weight: bold;
         font-size: 28px;
         margin: 0;
         padding: 0;
@@ -61,19 +61,19 @@
         text-decoration: none;
         display: inline-block;
         background: #007aff;
-        color: #fff;
+        color: white;
         border: none;
         cursor: pointer;
     }
 
     .action-button {
         background: #007aff;
-        color: #fff;
+        color: white;
     }
 
     .secondary-button {
-        background: #000;
-        color: #fff;
+        background: black;
+        color: white;
     }
 
     textarea {
@@ -120,8 +120,7 @@
     </div>
 
     <div id="headerNav" class="header-nav">
-        <a class="mf-button" id="returnTarget"></a>
-        /Catalogue/index.htmlCatalog</a>
+        #Return</a>
     </div>
 
 </div>
@@ -187,7 +186,9 @@ if (perimeter) {
 
 if (perimeter === "customerOwned") {
     const buyRow = document.getElementById("buyRow");
-    if (buyRow) buyRow.style.display = "none";
+    if (buyRow) {
+        buyRow.style.display = "none";
+    }
 }
 </script>
 
