@@ -15,7 +15,6 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* Header layout: logo + title left, nav buttons right */
     .header-row {
         display: flex;
         justify-content: space-between;
@@ -37,7 +36,6 @@
         border-radius: 6px;
     }
 
-    /* Universal MicroFoundary title styling */
     .tool-title {
         font-weight: bold !important;
         font-size: 28px;
@@ -46,16 +44,14 @@
         text-align: left;
     }
 
-    /* Right-aligned navigation buttons */
     .header-nav {
-        display: none; /* shown only when perimeter is present */
+        display: none;
         flex-direction: column;
         align-items: flex-end;
         text-align: right;
         gap: 6px;
     }
 
-    /* Base button styling */
     .mf-button {
         width: auto;
         min-width: auto;
@@ -66,9 +62,10 @@
         display: inline-block;
         background: #007aff;
         color: #fff;
+        border: none;
+        cursor: pointer;
     }
 
-    /* Action buttons */
     .action-button {
         background: #007aff;
         color: #fff;
@@ -107,7 +104,6 @@
         gap: 10px;
     }
 
-    /* Buy button spacing */
     .buy-row {
         margin-top: 18px;
     }
@@ -116,7 +112,6 @@
 
 <body>
 
-<!-- Header row: left = logo + title, right = nav buttons -->
 <div class="header-row">
 
     <div class="header-left">
@@ -140,7 +135,6 @@
 
 <div id="outputBox" class="output-box"></div>
 
-<!-- Buy This Tool button -->
 <div id="buyRow" class="buy-row">
     /Payment/payment.html?tool=Clarifier
        Buy This Tool
@@ -170,7 +164,6 @@ function clearAll() {
     document.getElementById("outputBox").textContent = "";
 }
 
-/* Show right-aligned header navigation based on perimeter */
 const params = new URLSearchParams(window.location.search);
 const perimeter = params.get("perimeter");
 
@@ -192,9 +185,7 @@ if (perimeter) {
     }
 }
 
-/* Hide Buy button if customer already owns the tool */
-const ownership = params.get("perimeter");
-if (ownership === "customerOwned") {
+if (perimeter === "customerOwned") {
     const buyRow = document.getElementById("buyRow");
     if (buyRow) buyRow.style.display = "none";
 }
