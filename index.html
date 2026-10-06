@@ -3,110 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Clarifier</title>
 
 <link rel="stylesheet" href="universal.css">
 
 <style>
-    body {
-        background: #ffffff;
-        margin: 0;
-        padding: 20px;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
+body{
+    background:#fff;
+    margin:0;
+    padding:20px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
 
-    .header-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin-bottom: 6px;
-    }
+.header-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:20px;
+}
 
-    .header-left {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-    }
+.header-left{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+}
 
-    .header-left img {
-        height: 32px;
-        width: auto;
-        border-radius: 6px;
-    }
+.header-left img{
+    height:48px;
+    width:auto;
+    border-radius:6px;
+}
 
-    .tool-title {
-        font-weight: bold;
-        font-size: 28px;
-        margin: 0;
-        padding: 0;
-        text-align: left;
-    }
+.tool-title{
+    margin:0;
+    font-size:28px;
+    font-weight:bold;
+}
 
-    .header-nav {
-        display: none;
-        flex-direction: column;
-        align-items: flex-end;
-        text-align: right;
-        gap: 6px;
-    }
+.header-nav{
+    display:none;
+    flex-direction:column;
+    gap:8px;
+}
 
-    .mf-button {
-        width: auto;
-        min-width: auto;
-        padding: 6px 12px;
-        border-radius: 6px;
-        font-size: 14px;
-        text-decoration: none;
-        display: inline-block;
-        background: #007aff;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-    }
+.mf-button{
+    display:inline-block;
+    padding:8px 14px;
+    border:none;
+    border-radius:6px;
+    text-decoration:none;
+    cursor:pointer;
+    font-size:14px;
+}
 
-    .action-button {
-        background: #007aff;
-        color: #fff;
-    }
+.action-button{
+    background:#007aff;
+    color:#fff;
+}
 
-    .secondary-button {
-        background: #000;
-        color: #fff;
-    }
+.secondary-button{
+    background:#000;
+    color:#fff;
+}
 
-    textarea {
-        width: 100%;
-        height: 150px;
-        padding: 12px;
-        box-sizing: border-box;
-        font-size: 16px;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-        resize: vertical;
-    }
+textarea{
+    width:100%;
+    height:180px;
+    padding:12px;
+    box-sizing:border-box;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:16px;
+    resize:vertical;
+}
 
-    .output-box {
-        margin-top: 16px;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        background: #fafafa;
-        min-height: 120px;
-        white-space: pre-wrap;
-        font-size: 16px;
-    }
+.button-row{
+    margin-top:12px;
+    display:flex;
+    gap:10px;
+}
 
-    .button-row {
-        margin-top: 12px;
-        display: flex;
-        gap: 10px;
-    }
+.output-box{
+    margin-top:18px;
+    min-height:120px;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    background:#fafafa;
+    white-space:pre-wrap;
+}
 
-    .buy-row {
-        margin-top: 18px;
-    }
+.buy-row{
+    margin-top:24px;
+}
+
+.buy-link{
+    display:inline-block;
+    background:#28a745;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:6px;
+    font-weight:600;
+}
+
+.tool-footer{
+    margin-top:30px;
+    padding-top:15px;
+    border-top:1px solid #ddd;
+    text-align:center;
+    font-size:13px;
+    color:#666;
+}
 </style>
 </head>
 
@@ -115,37 +125,69 @@
 <div class="header-row">
 
     <div class="header-left">
+
         IMG_1741.jpeg
-        <h1 class="tool-title">Clarifier</h1>
+
+        <h1 class="tool-title">
+            Clarifier
+        </h1>
+
     </div>
 
     <div id="headerNav" class="header-nav">
-        <a class="mf-button" id="returnTarget"></a>
+        <a class="mf-button action-button" id="returnTarget"></a>
     </div>
 
 </div>
 
-<textarea id="inputText" placeholder="Paste messy notes here..."></textarea>
+<textarea
+    id="inputText"
+    placeholder="Paste messy notes here..."
+></textarea>
 
 <div class="button-row">
-    <button class="mf-button action-button" onclick="clarifyText()">Clarify</button>
-    <button class="mf-button secondary-button" onclick="clearAll()">Clear</button>
+
+    <button
+        class="mf-button action-button"
+        onclick="clarifyText()">
+        Clarify
+    </button>
+
+    <button
+        class="mf-button secondary-button"
+        onclick="clearAll()">
+        Clear
+    </button>
+
 </div>
 
 <div id="outputBox" class="output-box"></div>
 
 <div id="buyRow" class="buy-row">
+
     /Payment/payment.html?tool=Clarifier
+
         Buy This Tool
+
     </a>
+
 </div>
 
-<script>
-function clarifyText() {
-    const raw = document.getElementById("inputText").value;
+<footer class="tool-footer">
 
-    if (!raw.trim()) {
-        document.getElementById("outputBox").textContent = "";
+    <div>Part of the MicroFox Tool Collection</div>
+
+</footer>
+
+<script>
+
+function clarifyText(){
+
+    const raw =
+        document.getElementById("inputText").value;
+
+    if(!raw.trim()){
+        document.getElementById("outputBox").textContent="";
         return;
     }
 
@@ -153,44 +195,78 @@ function clarifyText() {
         .split(/\n+/)
         .map(line => line.trim())
         .filter(line => line.length > 0)
-        .map(line => "- " + line);
+        .map(line => "• " + line);
 
-    document.getElementById("outputBox").textContent = lines.join("\n");
+    document.getElementById("outputBox").textContent =
+        lines.join("\n");
+
 }
 
-function clearAll() {
+function clearAll(){
+
     document.getElementById("inputText").value = "";
+
     document.getElementById("outputBox").textContent = "";
+
 }
 
-const params = new URLSearchParams(window.location.search);
-const perimeter = params.get("perimeter");
+const params =
+    new URLSearchParams(window.location.search);
 
-if (perimeter) {
-    const nav = document.getElementById("headerNav");
+const perimeter =
+    params.get("perimeter");
+
+if(perimeter){
+
+    const nav =
+        document.getElementById("headerNav");
+
     nav.style.display = "flex";
 
-    const btn = document.getElementById("returnTarget");
+    const btn =
+        document.getElementById("returnTarget");
 
-    if (perimeter === "WidgetIndex") {
-        btn.textContent = "Return to Widget Index";
-        btn.href = "/MicroWidgets/index.html";
-    } else if (perimeter === "Home") {
-        btn.textContent = "Return to Home";
-        btn.href = "/index.html";
-    } else {
-        btn.textContent = "Return to Catalogue";
-        btn.href = "/Catalogue/index.html";
+    if(perimeter === "WidgetIndex"){
+
+        btn.textContent =
+            "Return to Widget Index";
+
+        btn.href =
+            "/MicroWidgets/index.html";
+
+    }
+    else if(perimeter === "Home"){
+
+        btn.textContent =
+            "Return to Home";
+
+        btn.href =
+            "/index.html";
+
+    }
+    else{
+
+        btn.textContent =
+            "Return to Catalogue";
+
+        btn.href =
+            "/Catalogue/index.html";
+
     }
 }
 
-if (perimeter === "customerOwned") {
-    const buyRow = document.getElementById("buyRow");
-    if (buyRow) {
+if(perimeter === "customerOwned"){
+
+    const buyRow =
+        document.getElementById("buyRow");
+
+    if(buyRow){
         buyRow.style.display = "none";
     }
 }
+
 </script>
 
 </body>
 </html>
+
