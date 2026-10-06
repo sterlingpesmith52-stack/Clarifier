@@ -57,6 +57,7 @@ textarea{
     border-radius:16px;
     font-size:1.1rem;
     resize:none;
+    background:#fff;
 }
 
 /* Buttons */
@@ -70,11 +71,16 @@ textarea{
 
 .btn{
     border:none;
-    border-radius:12px;
-    padding:14px 32px;
-    font-size:1.1rem;
+    border-radius:10px;
+    padding:12px 28px;
+    font-size:1rem;
     font-weight:600;
     cursor:pointer;
+    transition:opacity .2s ease;
+}
+
+.btn:hover{
+    opacity:.9;
 }
 
 .btn-primary{
@@ -113,8 +119,9 @@ textarea{
     color:#fff;
     text-decoration:none;
     padding:12px 24px;
-    border-radius:12px;
+    border-radius:10px;
     font-weight:600;
+    font-size:1rem;
     transition:background .2s ease;
 }
 
@@ -139,6 +146,10 @@ textarea{
 
     body{
         padding:16px;
+    }
+
+    .header-left{
+        gap:10px;
     }
 
     .tool-title{
@@ -183,7 +194,7 @@ textarea{
     </div>
 
     <footer class="footer">
-        Part of the MicroFox Tool Collection
+        Part of the MicroFoundry Tool Collection
     </footer>
 
 </div>
