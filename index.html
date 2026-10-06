@@ -3,270 +3,160 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Clarifier</title>
 
-<link rel="stylesheet" href="universal.css">
-
 <style>
-body{
-    background:#fff;
-    margin:0;
-    padding:20px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.header-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    margin-bottom:20px;
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f5f5f7;
+    color: #000;
+    padding: 24px;
 }
 
-.header-left{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:6px;
+.container {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.header-left img{
-    height:48px;
-    width:auto;
-    border-radius:6px;
+/* Header */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
 }
 
-.tool-title{
-    margin:0;
-    font-size:28px;
-    font-weight:bold;
+.tool-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
 }
 
-.header-nav{
-    display:none;
-    flex-direction:column;
-    gap:8px;
+.tool-title {
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 
-.mf-button{
-    display:inline-block;
-    padding:8px 14px;
-    border:none;
-    border-radius:6px;
-    text-decoration:none;
-    cursor:pointer;
-    font-size:14px;
+/* Input Areas */
+textarea {
+    width: 100%;
+    min-height: 220px;
+    padding: 16px;
+    border: 2px solid #d0d0d0;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    resize: vertical;
 }
 
-.action-button{
-    background:#007aff;
-    color:#fff;
+.button-row {
+    display: flex;
+    gap: 16px;
+    margin: 20px 0;
 }
 
-.secondary-button{
-    background:#000;
-    color:#fff;
+.btn {
+    border: none;
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-textarea{
-    width:100%;
-    height:180px;
-    padding:12px;
-    box-sizing:border-box;
-    border:1px solid #ccc;
-    border-radius:6px;
-    font-size:16px;
-    resize:vertical;
+.btn-primary {
+    background: #007aff;
+    color: #fff;
 }
 
-.button-row{
-    margin-top:12px;
-    display:flex;
-    gap:10px;
+.btn-secondary {
+    background: #000;
+    color: #fff;
 }
 
-.output-box{
-    margin-top:18px;
-    min-height:120px;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:6px;
-    background:#fafafa;
-    white-space:pre-wrap;
+.output-box {
+    width: 100%;
+    min-height: 220px;
+    padding: 16px;
+    border: 2px solid #d0d0d0;
+    border-radius: 16px;
+    background: #fff;
+    margin-top: 12px;
 }
 
-.buy-row{
-    margin-top:24px;
+/* Purchase Section */
+.purchase-section {
+    margin: 32px 0;
+    text-align: center;
 }
 
-.buy-link{
-    display:inline-block;
-    background:#28a745;
-    color:#fff;
-    text-decoration:none;
-    padding:10px 16px;
-    border-radius:6px;
-    font-weight:600;
+.buy-button {
+    display: inline-block;
+    background: #007aff;
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.2s;
 }
 
-.tool-footer{
-    margin-top:30px;
-    padding-top:15px;
-    border-top:1px solid #ddd;
-    text-align:center;
-    font-size:13px;
-    color:#666;
+.buy-button:hover {
+    background: #005fcc;
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid #d9d9d9;
+    padding-top: 24px;
+    text-align: center;
+    color: #666;
+    font-size: 1rem;
 }
 </style>
 </head>
-
 <body>
 
-<div class="header-row">
+<div class="container">
 
+    <!-- Header -->
     <div class="header-left">
-
         IMG_1741.jpeg
-
-        <h1 class="tool-title">
-            Clarifier
-        </h1>
-
+        <h1 class="tool-title">Clarifier</h1>
     </div>
 
-    <div id="headerNav" class="header-nav">
-        <a class="mf-button action-button" id="returnTarget"></a>
+    <!-- Input -->
+    <textarea
+        id="inputText"
+        placeholder="Paste messy notes here..."></textarea>
+
+    <!-- Buttons -->
+    <div class="button-row">
+        <button class="btn btn-primary">Clarify</button>
+        <button class="btn btn-secondary">Clear</button>
     </div>
 
-</div>
+    <!-- Output -->
+    <div id="outputText" class="output-box"></div>
 
-<textarea
-    id="inputText"
-    placeholder="Paste messy notes here..."
-></textarea>
+    <!-- Purchase Button -->
+    <div class="purchase-section">
+        /Payment/payment.html?tool=Clarifier
+            Buy This Tool
+        </a>
+    </div>
 
-<div class="button-row">
-
-    <button
-        class="mf-button action-button"
-        onclick="clarifyText()">
-        Clarify
-    </button>
-
-    <button
-        class="mf-button secondary-button"
-        onclick="clearAll()">
-        Clear
-    </button>
+    <!-- Footer -->
+    <footer class="footer">
+        Part of the MicroFox Tool Collection
+    </footer>
 
 </div>
-
-<div id="outputBox" class="output-box"></div>
-
-<div id="buyRow" class="buy-row">
-
-    /Payment/payment.html?tool=Clarifier
-
-        Buy This Tool
-
-    </a>
-
-</div>
-
-<footer class="tool-footer">
-
-    <div>Part of the MicroFox Tool Collection</div>
-
-</footer>
-
-<script>
-
-function clarifyText(){
-
-    const raw =
-        document.getElementById("inputText").value;
-
-    if(!raw.trim()){
-        document.getElementById("outputBox").textContent="";
-        return;
-    }
-
-    const lines = raw
-        .split(/\n+/)
-        .map(line => line.trim())
-        .filter(line => line.length > 0)
-        .map(line => "• " + line);
-
-    document.getElementById("outputBox").textContent =
-        lines.join("\n");
-
-}
-
-function clearAll(){
-
-    document.getElementById("inputText").value = "";
-
-    document.getElementById("outputBox").textContent = "";
-
-}
-
-const params =
-    new URLSearchParams(window.location.search);
-
-const perimeter =
-    params.get("perimeter");
-
-if(perimeter){
-
-    const nav =
-        document.getElementById("headerNav");
-
-    nav.style.display = "flex";
-
-    const btn =
-        document.getElementById("returnTarget");
-
-    if(perimeter === "WidgetIndex"){
-
-        btn.textContent =
-            "Return to Widget Index";
-
-        btn.href =
-            "/MicroWidgets/index.html";
-
-    }
-    else if(perimeter === "Home"){
-
-        btn.textContent =
-            "Return to Home";
-
-        btn.href =
-            "/index.html";
-
-    }
-    else{
-
-        btn.textContent =
-            "Return to Catalogue";
-
-        btn.href =
-            "/Catalogue/index.html";
-
-    }
-}
-
-if(perimeter === "customerOwned"){
-
-    const buyRow =
-        document.getElementById("buyRow");
-
-    if(buyRow){
-        buyRow.style.display = "none";
-    }
-}
-
-</script>
 
 </body>
 </html>
-
