@@ -91,12 +91,13 @@ textarea{
 
 .output-box{
     width:100%;
-    height:170px;
+    min-height:170px;
     padding:16px;
     border:2px solid #d0d0d0;
     border-radius:16px;
     background:#fff;
     overflow:auto;
+    white-space:pre-wrap;
 }
 
 /* Purchase Button */
@@ -114,7 +115,7 @@ textarea{
     padding:12px 24px;
     border-radius:12px;
     font-weight:600;
-    transition:background 0.2s ease;
+    transition:background .2s ease;
 }
 
 .buy-button:hover{
@@ -128,7 +129,7 @@ textarea{
     padding-top:14px;
     text-align:center;
     color:#666;
-    font-size:0.95rem;
+    font-size:.95rem;
     margin-top:20px;
 }
 
@@ -152,10 +153,6 @@ textarea{
     textarea{
         height:170px;
     }
-
-    .output-box{
-        height:150px;
-    }
 }
 </style>
 </head>
@@ -173,8 +170,8 @@ textarea{
         placeholder="Paste messy notes here..."></textarea>
 
     <div class="button-row">
-        <button class="btn btn-primary" id="clarifyBtn">Clarify</button>
-        <button class="btn btn-secondary" id="clearBtn">Clear</button>
+        <button id="clarifyBtn" class="btn btn-primary">Clarify</button>
+        <button id="clearBtn" class="btn btn-secondary">Clear</button>
     </div>
 
     <div id="outputText" class="output-box"></div>
@@ -196,6 +193,7 @@ const inputText = document.getElementById('inputText');
 const outputText = document.getElementById('outputText');
 
 document.getElementById('clarifyBtn').addEventListener('click', () => {
+
     const text = inputText.value.trim();
 
     if (!text) {
@@ -203,9 +201,11 @@ document.getElementById('clarifyBtn').addEventListener('click', () => {
         return;
     }
 
-    outputText.textContent = text
+    const clarified = text
         .replace(/\s+/g, ' ')
-        .replace(/\.\s*/g, '.\n\n');
+        .replace(/\. /g, '.\n\n');
+
+    outputText.textContent = clarified;
 });
 
 document.getElementById('clearBtn').addEventListener('click', () => {
